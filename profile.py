@@ -20,7 +20,7 @@ for i in range(params.nodeCount):
     if params.phystype:
       node.hardware_type = params.phystype
 
-    iface = node.addInterface("eth{i}".format(i))
+    iface = node.addInterface("eth{}".format(i))
     lan.addInterface(iface)
 
     node.addService(pg.Execute(shell='sh', command="""\
