@@ -15,12 +15,12 @@ lan = request.LAN("lan")
 
 for i in range(params.nodeCount):
     node = request.RawPC("node" + str(i))
-    node.disk_image = "urn:publicid:IDN+wisc.cloudlab.us+image+distribml-PG0:python-setup.node0-nvidia-cuda"
+    node.disk_image = "urn:publicid:IDN+wisc.cloudlab.us+image+distribml-PG0:py-torch-nvidia"
 
     if params.phystype:
       node.hardware_type = params.phystype
 
-    iface = node.addInterface("eth1")
+    iface = node.addInterface("eth{i}".format(i))
     lan.addInterface(iface)
 
     node.addService(pg.Execute(shell='sh', command="""\
