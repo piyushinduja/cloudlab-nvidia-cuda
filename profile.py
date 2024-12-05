@@ -15,7 +15,7 @@ lan = request.LAN("lan")
 
 for i in range(params.nodeCount):
     node = request.RawPC("node" + str(i))
-    node.disk_image = "urn:publicid:IDN+wisc.cloudlab.us+image+distribml-PG0:py-torch-nvidia"
+    node.disk_image = "urn:publicid:IDN+wisc.cloudlab.us+image+distribml-PG0:nvidia-cuda-torch"
 
     if params.phystype:
       node.hardware_type = params.phystype
