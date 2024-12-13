@@ -30,4 +30,7 @@ for i in range(params.nodeCount):
     echo "RANK={}" | sudo tee -a /etc/environment;
     """.format(params.nodeCount, i)))
 
+    node.addService(pg.Execute(shell='sh', command="sudo iptables -A INPUT -p tcp --dport 29500 -j ACCEPT --source 10.10.0.0/16"))
+    node.addService(pg.Execute(shell='sh', command="sudo iptables -A INPUT -p tcp --dport 29500 -j REJECT"))
+
 pc.printRequestRSpec(request)
